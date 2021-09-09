@@ -1,39 +1,13 @@
-"""def makeMatrix(n):
-    matrix = []
-
-    for i in range(n+1):
-        matrix.append([0])
-
-        for j in range(n+1):
-            matrix[i].append(0)
-
-    return matrix
-
-
-def printMatrix(matrix):
-    for i in matrix:
-        for j in i:
-            print("\t", j, end=" ")
-        print()
-
-def getNumberOfTokens(matrix):
-    rows = len(matrix)
-    colums = len(matrix[0])
-
-    return int((rows*colums)/2)
-
-matrix = makeMatrix(2)
-print(matrix)
-printMatrix(matrix)
-print(getNumberOfTokens(matrix))"""
-
-
-
 
 import random
 
 
-# Teachers part
+"""
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Teachers part
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+"""
+
 
 def next_empty(Board, i, j):
     idx = i * len(Board[0]) + j
@@ -312,6 +286,8 @@ def brute_strength_solution(matrix):
     return solutions_list
 
 
+def backtracking_solution(matrix):
+    return False
 
 
 """
@@ -321,10 +297,11 @@ Testing
 """
 
 
-matrix = False
-while not matrix:  # This loop is very necessary to make sure we get a matrix and never get False
-    matrix = create_puzzle(random.randint(1, 3))
+for i in range(1, 14):
+    matrix = False
+    while not matrix:  # This loop is very necessary to make sure we get a matrix and never get False
+        matrix = create_puzzle(i)
 
 
-print(brute_strength_solution(matrix))
-
+    print(brute_strength_solution(matrix))
+    # print(backtracking_solution(matrix))
