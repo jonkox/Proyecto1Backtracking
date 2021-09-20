@@ -142,9 +142,7 @@ It returns False if the combination iss wrong
 """
 
 
-def is_this_combination_valid(possible_solution, num_matrix):
-    vertical_length = len(num_matrix)
-    horizontal_length = vertical_length + 1
+def is_this_combination_valid(possible_solution, num_matrix, horizontal_length, vertical_length):
 
     i = 0
     j = 0
@@ -157,10 +155,10 @@ def is_this_combination_valid(possible_solution, num_matrix):
 
     # This for checks the accommodation of each tile in the given combination
     for accommodation in possible_solution:
-        # Checks where is a tile available to try
+        tile_used = False  # Needed for a validation
 
+        # Checks where is a tile available to try
         while i < vertical_length:
-            tile_used = False  # Needed for a validation
 
             if not aux_matrix[i][j]:
                 # We found a free space
@@ -251,10 +249,13 @@ def brute_strength_solution(matrix):
     solutions_list = []
     limit = 2 ** amount_tiles
 
+    vertical_length = len(matrix)
+    horizontal_length = vertical_length + 1
+
     for i in range(0, limit):
         possible_solution = dec_to_bin(i, amount_tiles)  # The permutation corresponding to this iteration
         # Checks if this permutation is correct
-        if is_this_combination_valid(possible_solution, matrix):
+        if is_this_combination_valid(possible_solution, matrix, horizontal_length, vertical_length):
             # Found a correct accommodation of the tiles
             solutions_list.append(possible_solution)
 
@@ -506,10 +507,85 @@ Testing
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 """
 
-Matrix = False
-while not Matrix:  # This loop is very necessary to make sure we get a matrix and never get False
-    Matrix = create_puzzle(2)
 
-print(brute_strength_solution(Matrix))
-backtracking_solution(Matrix)
-print(backtrackingList)
+"""
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+This function writes on a.txt file the time of each algorithm solving a set
+It receives as parameter the time of brute strength, time of backtracking and the size of the set
+It writes on the .txt file
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+"""
+
+
+def write_set(brute_time, backtracking_time, set):
+    # Corrects format, avoids scientific notation
+    brute_time = format(float(brute_time), '.8f')
+    backtracking_time = format(float(backtracking_time), '.8f')
+
+    # Writes on file
+    file = open("pruebas.txt", "a")
+    file.write("Set doble " + set + " - fuerza bruta - " + brute_time + "s \n")
+    file.write("Set doble " + set + " - backtracking - " + backtracking_time + "s \n")
+    file.write("\n")
+    file.close()
+
+
+"""
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+This function writes on a.txt file the average time of each algorithm solving a set many times
+It receives as parameter the average time of brute strength, average time of backtracking and the size of the set
+It writes on the .txt file
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+"""
+
+
+def write_average(brute_average, backtracking_average, set):
+    # Corrects format, avoids scientific notation
+    brute_average = format(float(brute_average), '.8f')
+    backtracking_average = format(float(backtracking_average), '.8f')
+
+    # Writes on file
+    file = open("pruebas.txt", "a")
+    file.write("Promedio de fuerza bruta con set doble " + set + ": " + brute_average + "s \n")
+    file.write("Promedio de backtracking con set doble " + set + ": " + backtracking_average + "s \n")
+    file.write("\n")
+    file.write("\n----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
+    file.write("\n\n")
+    file.close()
+
+
+# To avoid repeated text
+file = open("pruebas.txt", "w")
+file.write("")
+file.close()
+
+# From set double 1 to set double 9
+for i in range(1, 10):
+    # To get averages
+    bruteSum = 0
+    backtrackingSum = 0
+
+    # Three cases for set
+    for j in range(0, 3):
+        Matrix = False
+        while not Matrix:  # This loop is very necessary to make sure we get a matrix and never get False
+            Matrix = create_puzzle(i)
+
+        # Respective times of this case
+        bruteTime = timeit.timeit(lambda: brute_strength_solution(Matrix), number=1)
+        backtrackingTime = timeit.timeit(lambda: backtracking_solution(Matrix), number=1)
+
+        # Saving on a .txt the times
+        write_set(bruteTime, backtrackingTime, str(i))
+
+        # Forming the averages
+        bruteSum += bruteTime
+        backtrackingSum += backtrackingTime
+
+    # Saving on a .txt the average of this set
+    write_average(bruteSum / 3, backtrackingSum / 3, str(i))
+
+
+
+
+
