@@ -1,0 +1,60 @@
+Set doble 1 - fuerza bruta - 0.00007100s 
+Set doble 1 - backtracking - 0.00005150s 
+
+Set doble 1 - fuerza bruta - 0.00008460s 
+Set doble 1 - backtracking - 0.00005540s 
+
+Set doble 1 - fuerza bruta - 0.00005160s 
+Set doble 1 - backtracking - 0.00003530s 
+
+Promedio de fuerza bruta con set doble 1: 0.00006907s 
+Promedio de backtracking con set doble 1: 0.00004740s 
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Set doble 2 - fuerza bruta - 0.00072950s 
+Set doble 2 - backtracking - 0.00012580s 
+
+Set doble 2 - fuerza bruta - 0.00052180s 
+Set doble 2 - backtracking - 0.00009740s 
+
+Set doble 2 - fuerza bruta - 0.00047530s 
+Set doble 2 - backtracking - 0.00012110s 
+
+Promedio de fuerza bruta con set doble 2: 0.00057553s 
+Promedio de backtracking con set doble 2: 0.00011477s 
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Set doble 3 - fuerza bruta - 0.00745500s 
+Set doble 3 - backtracking - 0.00034090s 
+
+Set doble 3 - fuerza bruta - 0.00787190s 
+Set doble 3 - backtracking - 0.00028030s 
+
+Set doble 3 - fuerza bruta - 0.00695230s 
+Set doble 3 - backtracking - 0.00045000s 
+
+Promedio de fuerza bruta con set doble 3: 0.00742640s 
+Promedio de backtracking con set doble 3: 0.00035707s 
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Set doble 4 - fuerza bruta - 0.26282060s 
+Set doble 4 - backtracking - 0.00202070s 
+
+Set doble 4 - fuerza bruta - 0.23561950s 
+Set doble 4 - backtracking - 0.00128790s 
+
+Set doble 4 - fuerza bruta - 0.35404870s 
+Set doble 4 - backtracking - 0.05072880s 
+
+Promedio de fuerza bruta con set doble 4: 0.28416293s 
+Promedio de backtracking con set doble 4: 0.01801247s 
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
