@@ -106,7 +106,7 @@ def toFile(filename, n, board, solution):
 Our part
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 """
-
+solutions_list = [] #save te valid solutions
 """
 This function calculates the amount of tiles the set has according to the base matrix
 It tells 10 tiles if the set is double 3, 21 tiles if it is double 5, 28 tiles if it is double 6, etc
@@ -247,7 +247,7 @@ It returns a list with each correct permutation
 
 def brute_strength_solution(matrix):
     amount_tiles = get_tiles_amount(matrix)
-    solutions_list = []
+    solutions_list.clear()
     limit = 2 ** amount_tiles
 
     vertical_length = len(matrix)
@@ -260,7 +260,7 @@ def brute_strength_solution(matrix):
             # Found a correct accommodation of the tiles
             solutions_list.append(possible_solution)
 
-    return solutions_list
+    return
 
 
 """
@@ -496,6 +496,7 @@ def backtracking_solution(matrix):
     backtracking_aux("", matrix, amount_tiles, vertical_length, horizontal_length, 0, 0, [],aux_matrix)
 #endregion
 
+#region testings
 """
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Testing
@@ -582,5 +583,37 @@ for i in range(1, 10):
     """
 
 
+def proofs(n, cantidad_de_pruebas, algoritmo):
+    time = 0
+
+    Matrix = False
+    while not Matrix:  # This loop is very necessary to make sure we get a matrix and never get False
+        Matrix = create_puzzle(n)
+
+    #evaluates which algorithm will use
+    if algoritmo == 0:
+
+        for i in range(cantidad_de_pruebas):
+            time += timeit.timeit(lambda: brute_strength_solution(Matrix), number=1)
+
+    if algoritmo == 1:
+
+        for i in range(cantidad_de_pruebas):
+            time += timeit.timeit(lambda: backtracking_solution(Matrix), number=1)
 
 
+    #divide between the amount of proofs
+    time = time / cantidad_de_pruebas
+
+    #formats the result in case that it become in cientific notation
+    if n == 1:
+        time = "{:f}".format(time)
+
+    #print the info
+    print("La medición se hizo con un n= ",n," unas ", i, " veces.")
+    print("Su promedio de tiempo de ejecucion es -> ", time)
+
+
+proofs(1,101,1)
+
+#endregion
