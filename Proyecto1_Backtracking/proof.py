@@ -8,7 +8,7 @@ from main import create_puzzle
 
 
 def calculate_centered_start(length):
-    i = (7 - length) // 2
+    i = (10 - length) // 2
 
     # i = j
     # i = 10 - length = 11-1 - length = 11 - length - 1 = 11 - (length +1)
@@ -54,8 +54,7 @@ def paint_matrix_gui(buttons, n,function, label,solution):
         possible_solution = main.solutions_list
         possible_solution = possible_solution[randint(0, len(possible_solution)-1)]
 
-
-        #Set horizontal and vertical values
+        # Set horizontal and vertical values
         horizontal_length = len(num_matrix[0])
         vertical_length = len(num_matrix)
 
@@ -80,13 +79,11 @@ def paint_matrix_gui(buttons, n,function, label,solution):
         horizontal_length = len(num_matrix[0])
         vertical_length = len(num_matrix)
 
-
     i = 0
     j = 0
 
     x, y = calculate_centered_start(vertical_length)
-    x = 0
-    y =0
+    aux_y = y
 
 
     # This is an auxiliary matrix that helps to know which tiles are already taken
@@ -146,7 +143,7 @@ def paint_matrix_gui(buttons, n,function, label,solution):
                 j = 0
                 i += 1
 
-                y = 0
+                y = aux_y
                 x += 1
 
             if tile_used:

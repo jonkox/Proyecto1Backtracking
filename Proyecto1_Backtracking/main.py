@@ -1,7 +1,7 @@
 import random
 import timeit
 
-#region teacher
+# region teacher
 """
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Teachers part
@@ -98,15 +98,17 @@ def toFile(filename, n, board, solution):
     for i in solution:
         file.write(str(i) + " ")
     file.write("\n")
-#endregion
 
-#region students
+
+# endregion
+
+# region students
 """
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Our part
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 """
-solutions_list = [] #save te valid solutions
+solutions_list = []  # save te valid solutions
 """
 This function calculates the amount of tiles the set has according to the base matrix
 It tells 10 tiles if the set is double 3, 21 tiles if it is double 5, 28 tiles if it is double 6, etc
@@ -436,7 +438,8 @@ It fills a list with each correct permutation
 """
 
 
-def backtracking_aux(solution, num_matrix, amount_tiles, vertical_length, horizontal_length, i, j, found_tiles,aux_matrix):
+def backtracking_aux(solution, num_matrix, amount_tiles, vertical_length, horizontal_length, i, j, found_tiles,
+                     aux_matrix):
     # Base case
     if len(solution) == amount_tiles:
         backtrackingList.append(solution)
@@ -456,7 +459,8 @@ def backtracking_aux(solution, num_matrix, amount_tiles, vertical_length, horizo
         else:
             # It had no problem we continue with this path
             x, y = result
-            backtracking_aux(solution + "0", num_matrix, amount_tiles, vertical_length, horizontal_length, x, y,tiles_result, aux_result)
+            backtracking_aux(solution + "0", num_matrix, amount_tiles, vertical_length, horizontal_length, x, y,
+                             tiles_result, aux_result)
 
         # Vertical child
         tiles_result = found_tiles[:]
@@ -471,7 +475,8 @@ def backtracking_aux(solution, num_matrix, amount_tiles, vertical_length, horizo
         else:
             # It had no problem we continue with this path
             x, y = result
-            backtracking_aux(solution + "1", num_matrix, amount_tiles, vertical_length, horizontal_length, x, y,tiles_result, aux_result)
+            backtracking_aux(solution + "1", num_matrix, amount_tiles, vertical_length, horizontal_length, x, y,
+                             tiles_result, aux_result)
 
 
 """
@@ -493,94 +498,19 @@ def backtracking_solution(matrix):
     aux_matrix = [[False] * horizontal_length for _ in range(vertical_length)]
 
     # Calls the real recursive backtracking function
-    backtracking_aux("", matrix, amount_tiles, vertical_length, horizontal_length, 0, 0, [],aux_matrix)
-#endregion
+    backtracking_aux("", matrix, amount_tiles, vertical_length, horizontal_length, 0, 0, [], aux_matrix)
 
-#region testings
+
+# endregion
+
+# region testings
+
+
 """
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Testing
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 """
-
-"""
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-This function writes on a.txt file the time of each algorithm solving a set
-It receives as parameter the time of brute strength, time of backtracking and the size of the set
-It writes on the .txt file
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-"""
-
-
-def write_set(brute_time, backtracking_time, set):
-    # Corrects format, avoids scientific notation
-    brute_time = format(float(brute_time), '.8f')
-    backtracking_time = format(float(backtracking_time), '.8f')
-
-    # Writes on file
-    file = open("pruebas.txt", "a")
-    file.write("Set doble " + set + " - fuerza bruta - " + brute_time + "s \n")
-    file.write("Set doble " + set + " - backtracking - " + backtracking_time + "s \n")
-    file.write("\n")
-    file.close()
-
-
-"""
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-This function writes on a.txt file the average time of each algorithm solving a set many times
-It receives as parameter the average time of brute strength, average time of backtracking and the size of the set
-It writes on the .txt file
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-"""
-"""
-
-def write_average(brute_average, backtracking_average, set):
-    # Corrects format, avoids scientific notation
-    brute_average = format(float(brute_average), '.8f')
-    backtracking_average = format(float(backtracking_average), '.8f')
-
-    # Writes on file
-    file = open("pruebas.txt", "a")
-    file.write("Promedio de fuerza bruta con set doble " + set + ": " + brute_average + "s \n")
-    file.write("Promedio de backtracking con set doble " + set + ": " + backtracking_average + "s \n")
-    file.write("\n")
-    file.write(
-        "\n----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
-    file.write("\n\n")
-    file.close()
-
-
-# To avoid repeated text
-file = open("pruebas.txt", "w")
-file.write("")
-file.close()
-
-# From set double 1 to set double 9
-for i in range(1, 10):
-    # To get averages
-    bruteSum = 0
-    backtrackingSum = 0
-
-    # Three cases for set
-    for j in range(0, 3):
-        Matrix = False
-        while not Matrix:  # This loop is very necessary to make sure we get a matrix and never get False
-            Matrix = create_puzzle(i)
-
-        # Respective times of this case
-        bruteTime = timeit.timeit(lambda: brute_strength_solution(Matrix), number=1)
-        backtrackingTime = timeit.timeit(lambda: backtracking_solution(Matrix), number=1)
-
-        # Saving on a .txt the times
-        write_set(bruteTime, backtrackingTime, str(i))
-
-        # Forming the averages
-        bruteSum += bruteTime
-        backtrackingSum += backtrackingTime
-
-    # Saving on a .txt the average of this set
-    write_average(bruteSum / 3, backtrackingSum / 3, str(i))
-    """
 
 
 def proofs(n, cantidad_de_pruebas, algoritmo):
@@ -590,7 +520,7 @@ def proofs(n, cantidad_de_pruebas, algoritmo):
     while not Matrix:  # This loop is very necessary to make sure we get a matrix and never get False
         Matrix = create_puzzle(n)
 
-    #evaluates which algorithm will use
+    # evaluates which algorithm will use
     if algoritmo == 0:
 
         for i in range(cantidad_de_pruebas):
@@ -601,19 +531,18 @@ def proofs(n, cantidad_de_pruebas, algoritmo):
         for i in range(cantidad_de_pruebas):
             time += timeit.timeit(lambda: backtracking_solution(Matrix), number=1)
 
-
-    #divide between the amount of proofs
+    # divide between the amount of proofs
     time = time / cantidad_de_pruebas
 
-    #formats the result in case that it become in cientific notation
+    # formats the result in case that it become in cientific notation
     if n == 1:
         time = "{:f}".format(time)
 
-    #print the info
-    print("La medición se hizo con un n= ",n," unas ", i, " veces.")
+    # print the info
+    print("La medición se hizo con un n= ", n, " unas ", i, " veces.")
     print("Su promedio de tiempo de ejecucion es -> ", time)
 
 
-proofs(1,101,1)
+proofs(1, 101, 1)
 
-#endregion
+# endregion
