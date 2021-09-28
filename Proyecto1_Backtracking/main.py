@@ -57,7 +57,7 @@ def place_tile(Board, i, j, ori, tile):
 def create_puzzle(n):
     """
     es posible que el algoritmo generador falle y no encuentre un tablero válido
-    Si sucede, retorna falso y no genera ningún archivo de salida
+    si sucede, retorna falso y no genera ningún archivo de salida
     """
 
     board = make_board(n + 1, n + 2)
@@ -260,7 +260,6 @@ def brute_strength_solution(matrix):
             # Found a correct accommodation of the tiles
             solutions_list.append(possible_solution)
 
-    return
 
 
 """
