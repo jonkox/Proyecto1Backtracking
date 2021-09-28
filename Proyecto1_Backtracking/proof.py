@@ -158,18 +158,17 @@ def paint_matrix_gui(buttons, n,function, label,solution):
 """Main window: this function show the main window to can see both solutions to a problem"""
 def main_window():
 
-    #region creacion y configuracion de la window
+    #region set window
     window = Tk()
 
-    # titulo
+    # title
     window.title("DOMINOSA")
-
-    # se le da tamaño a la window principal
+    
     window.geometry("625x900")
-    # color a la window principal
+    # color
     window.configure(bg="gray1")
 
-    etiqueta = Label(window, text="DOMINOSA", bg="red",fg= "white", padx=88, pady=5, font="Helvetica 25",relief="solid").place(x=150, y=5)
+    titleLabel = Label(window, text="DOMINOSA", bg="red",fg= "white", padx=88, pady=5, font="Helvetica 25",relief="solid").place(x=150, y=5)
 
     window.resizable(False, False)
 
@@ -177,7 +176,7 @@ def main_window():
 
     #endregion
 
-    # region rowS
+    # region rows
     buttons = []
     row1 = []
     row2 = []
@@ -192,8 +191,8 @@ def main_window():
 
     # endregion
 
-    #region columnas
-    # region COLUMNA 1
+    #region COLUMNS
+    # region COLUMN 1
 
     button_game1x1 = Button(window, width=4, bg="black", state="disabled", height=2, text="")
     button_game1x1.place(x=100, y=100)
@@ -247,7 +246,7 @@ def main_window():
 
     # endregion
 
-    # region COLUMNA 2
+    # region COLUMN 2
     button_game2x1 = Button(window, width=4, height=2, bg="black", state="disabled")
     button_game2x1.place(x=140, y=100)
     buttons.append(button_game2x1)
@@ -300,7 +299,7 @@ def main_window():
 
     # endregion
 
-    # region COLUMNA 3
+    # region COLUMN 3
     button_game3x1 = Button(window, width=4, height=2, bg="black", state="disabled", text="", fg="white")
     button_game3x1.place(x=180, y=100)
     buttons.append(button_game3x1)
@@ -353,7 +352,7 @@ def main_window():
 
     # endregion
 
-    # region COLUMNA 4
+    # region COLUMN 4
     button_game4x1 = Button(window, width=4, height=2, bg="black", state="disabled", text="", fg="white")
     button_game4x1.place(x=220, y=100)
     buttons.append(button_game4x1)
@@ -406,7 +405,7 @@ def main_window():
 
     # endregion
 
-    # region COLUMNA 5
+    # region COLUMN 5
     button_game5x1 = Button(window, width=4, height=2, bg="black", state="disabled")
     button_game5x1.place(x=260, y=100)
     buttons.append(button_game5x1)
@@ -459,7 +458,7 @@ def main_window():
 
     # endregion
 
-    # region COLUMNA 6
+    # region COLUMN 6
 
     button_game6x1 = Button(window, width=4, height=2, bg="black", state="disabled")
     button_game6x1.place(x=300, y=100)
@@ -513,7 +512,7 @@ def main_window():
 
     # endregion
 
-    # region COLUMNA 7
+    # region COLUMN 7
 
     button_game7x1 = Button(window, width=4, height=2, bg="black", state="disabled")
     button_game7x1.place(x=340, y=100)
@@ -567,7 +566,7 @@ def main_window():
 
     # endregion
 
-    # region COLUMNA 8
+    # region COLUMN 8
 
     button_game8x1 = Button(window, width=4, height=2, bg="black", state="disabled", text="", fg="white")
     button_game8x1.place(x=380, y=100)
@@ -621,7 +620,7 @@ def main_window():
 
     # endregion
 
-    # region COLUMNA 9
+    # region COLUMN 9
     button_game9x1 = Button(window, width=4, height=2, bg="black", state="disabled", text="", fg="white")
     button_game9x1.place(x=420, y=100)
     buttons.append(button_game9x1)
@@ -674,7 +673,7 @@ def main_window():
 
     # endregion
 
-    # region COLUMNA 10
+    # region COLUMN 10
 
     button_game10x1 = Button(window, width=4, bg="black", state="disabled", height=2, text="")
     button_game10x1.place(x=460, y=100)
@@ -728,7 +727,7 @@ def main_window():
 
     # endregion
 
-    # region COLUMNA 11
+    # region COLUMN 11
 
     button_game11x1 = Button(window, width=4, bg="black", state="disabled", height=2, text="")
     button_game11x1.place(x=500, y=100)
